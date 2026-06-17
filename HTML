@@ -780,26 +780,41 @@ span.flatpickr-weekday {
 }
 
 /* --- TOMBOL UTAMA PREMIUM (MAIN ACTION) --- */
-      .btn-main-action {
-      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%) !important;
-      color: white !important;
+      .btn-lightning {
+      background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%) !important;
       border: none !important;
-      padding: 14px 20px !important;
-      border-radius: 14px !important;
-      font-weight: 700 !important;
-      font-size: 0.95rem !important;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3) !important;
-      
-      /* KUNCI POSISI TENGAH */
+      border-radius: 12px !important;
+      color: white !important;
+      font-family: Arial, sans-serif !important;
+      font-weight: bold !important;
+      font-size: 14px !important;
+      padding: 12px 24px !important;
       display: flex !important;
-      justify-content: center !important; /* Menarik konten ke tengah horizontal */
-      align-items: center !important;     /* Menarik konten ke tengah vertikal */
-      text-align: center !important;
-      gap: 10px; /* Jarak antara ikon dan teks */
-      
-      transition: all 0.3s ease !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3) !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      cursor: pointer;
+      width: 100%;
+      text-transform: none !important;
+    }
+
+     .btn-lightning:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4) !important;
+      filter: brightness(1.1);
+    }
+
+    .btn-lightning i {
+      font-size: 1.2rem;
+      /* Memberikan efek bayangan halus pada ikon putih agar lebih tajam */
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); 
+      transition: transform 0.3s ease;
+    }
+
+    .btn-lightning:hover i {
+      transform: scale(1.2); /* Ikon membesar sedikit saat tombol di-hover */
     }
 
     /* Warna Abu-abu Modern (Slate Gray Gradient) */
@@ -838,11 +853,6 @@ span.flatpickr-weekday {
     /* Class untuk menampilkan tombol sebagai flex saat mode edit */
     .btn-batal-grad.show-flex {
       display: flex !important;
-    }
-
-    .btn-main-action {
-      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%) !important;
-      color: white !important;
     }
 
     /* Pastikan tombol Submit secara default adalah flex agar terlihat */
@@ -1491,7 +1501,7 @@ span.flatpickr-weekday {
   <div class="row">
     
     <!-- LEFT COLUMN: FORM INPUT -->
-    <div class="col-md-5 col-lg-4 sidebar">
+    <div class="col-md-6 col-lg-5 sidebar">
       
       <!-- BAGIAN TETAP (FIXED HEADER) -->
       <!-- BAGIAN TETAP (FIXED HEADER) -->
@@ -1502,26 +1512,34 @@ span.flatpickr-weekday {
         <div class="nav-control-panel">
           <div class="nav-group-label">Menu Navigasi & Master Data</div>
           
-          <!-- TOMBOL MASTER DATA (Row 1) -->
+          <!-- BARIS 1: MASTER DATA -->
           <div class="d-flex gap-3 mb-3">
-            <button id="navBtnPegawai" class="btn btn-sm btn-gradient btn-blue-grad w-100" data-bs-toggle="modal" data-bs-target="#modalPegawai">
-              <i class="bi bi-person-badge"></i> Pegawai
+            <!-- Icon Orang/Grup untuk Pegawai -->
+            <button id="navBtnPegawai" class="btn btn-lightning" data-bs-toggle="modal" data-bs-target="#modalPegawai">
+              <i class="bi bi-people-fill"></i> Pegawai
             </button>
-            <button id="navBtnKegiatan" class="btn btn-sm btn-gradient btn-blue-grad w-100" data-bs-toggle="modal" data-bs-target="#modalKegiatan">
-              <i class="bi bi-briefcase"></i> Sub Kegiatan
+            
+            <!-- Icon Tas Kerja untuk Sub Kegiatan -->
+            <button id="navBtnKegiatan" class="btn btn-lightning" data-bs-toggle="modal" data-bs-target="#modalKegiatan">
+              <i class="bi bi-briefcase-fill"></i> Sub Kegiatan
             </button>
-            <button id="navBtnPejabat" class="btn btn-sm btn-gradient btn-blue-grad w-100" data-bs-toggle="modal" data-bs-target="#modalPejabat">
-              <i class="bi bi-award"></i> Pejabat
+            
+            <!-- Icon Lencana/Award untuk Pejabat -->
+            <button id="navBtnPejabat" class="btn btn-lightning" data-bs-toggle="modal" data-bs-target="#modalPejabat">
+              <i class="bi bi-award-fill"></i> Pejabat
             </button>
           </div>
 
-          <!-- TOMBOL RIWAYAT & RESET (Row 2) -->
+          <!-- BARIS 2: OPERASIONAL -->
           <div class="d-flex gap-3">
-            <button id="navBtnRiwayat" class="btn btn-sm btn-gradient btn-green-grad w-100" data-bs-toggle="modal" data-bs-target="#modalRiwayat">
+            <!-- Icon Jam/History untuk Riwayat -->
+            <button id="navBtnRiwayat" class="btn btn-lightning" data-bs-toggle="modal" data-bs-target="#modalRiwayat">
               <i class="bi bi-clock-history"></i> Riwayat SP
             </button>
-            <button id="navBtnBaru" type="button" class="btn btn-sm btn-gradient btn-purple-grad w-100" onclick="resetFormSP()">
-              <i class="bi bi-file-earmark-plus"></i> SP Baru
+            
+            <!-- Icon File Plus untuk SP Baru -->
+            <button id="navBtnBaru" type="button" class="btn btn-lightning" onclick="resetFormSP()">
+              <i class="bi bi-file-earmark-plus-fill"></i> SP Baru
             </button>
           </div>
         </div>
@@ -1608,9 +1626,8 @@ span.flatpickr-weekday {
 
           <!-- CONTAINER TOMBOL AKSI UTAMA -->
           <div class="mt-3 mb-5" id="actionButtonContainer">
-            <button type="button" onclick="generateDocument()" class="btn btn-main-action w-100" id="btnSubmitSP">
-              <i class="bi bi-file-earmark-check-fill" id="iconSubmit"></i> 
-              <span id="textSubmit">Buat Surat Perintah</span>
+            <button type="button" onclick="generateDocument()" class="btn btn-lightning py-3" id="btnSubmitSP" style="font-size: 1.1rem !important;">
+              <i class="bi bi-lightning-charge-fill"></i> <span id="textSubmit">Buat Surat Perintah</span>
             </button>
 
             <button type="button" onclick="cancelEditMode()" class="btn btn-batal-grad w-100 mt-2 d-none" id="btnBatalEdit">
@@ -1623,7 +1640,7 @@ span.flatpickr-weekday {
     </div>
 
     <!-- RIGHT COLUMN: PDF PREVIEW MODERN -->
-    <div class="col-md-7 col-lg-8 d-flex flex-column p-0 bg-dark-viewer" style="height: 100vh;">
+    <div class="col-md-6 col-lg-7 d-flex flex-column p-0 bg-dark-viewer" style="height: 100vh;">
       <div id="actionArea" class="d-none pdf-toolbar animate__animated animate__fadeInDown">
         <div class="d-flex align-items-center">
           <div class="status-indicator me-3">
